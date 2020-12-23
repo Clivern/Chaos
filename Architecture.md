@@ -1,6 +1,6 @@
 <p align="center">
-    <img alt="Gunner Logo" src="/static/logo.png?v=1.0.0" width="240" />
-    <h3 align="center">Gunner</h3>
+    <img alt="Knot Logo" src="/static/logo.png?v=1.0.0" width="240" />
+    <h3 align="center">Knot</h3>
 </p>
 <br/>
 <p align="center">
@@ -11,16 +11,16 @@
 
 ### Multi-Node Setup (Cluster)
 
-- `etcd` is used as a datastore. Each `gunner` instance talks to the local etcd service. etcd nodes reach each other through a private network.
+- `etcd` is used as a datastore. Each `knot` instance talks to the local etcd service. etcd nodes reach each other through a private network.
 
-- `Gunner` slaves updates only the local etcd with new changes. If the change affects the
+- `Knot` slaves updates only the local etcd with new changes. If the change affects the
 `DNS` records, it will also change the global integrity `UUID` and set the local integrity value to be blank.
 
-- `Gunner` master updates the local etcd with new changes and it also updates the local `Bind9`
+- `Knot` master updates the local etcd with new changes and it also updates the local `Bind9`
 to be a master too. If the global integrity `UUID` not equal the local one, It will update `Bind9` `DNS`
 records, then it updates the global integrity `UUID` and the local integrity `UUID` to a new value.
 
-- If the master `Gunner` goes down, a new node will be the master. It will the figure out that
+- If the master `Knot` goes down, a new node will be the master. It will the figure out that
 the global integrity `UUID` is not equal the local integrity `UUID`. then it will start updating the
 `DNS` records of the `Bind9` and make it a master.
 

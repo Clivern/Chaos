@@ -1,21 +1,21 @@
 #!/bin/bash
 
-function upgrade_gunner {
-    echo "Upgrade gunner ..."
+function upgrade_knot {
+    echo "Upgrade knot ..."
 
-    cd /etc/gunner
+    cd /etc/knot
     mv config.prod.yml config.back.yml
 
-    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/gunner/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
+    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/knot/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
 
-    curl -sL https://github.com/Clivern/gunner/releases/download/v{$LATEST_VERSION}/gunner_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
+    curl -sL https://github.com/Clivern/knot/releases/download/v{$LATEST_VERSION}/knot_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
 
     rm config.prod.yml
     mv config.back.yml config.prod.yml
 
-    systemctl restart gunner
+    systemctl restart knot
 
-    echo "Gunner upgrade done!"
+    echo "Knot upgrade done!"
 }
 
-upgrade_gunner
+upgrade_knot

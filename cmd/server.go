@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/clivern/gunner/core/controller"
-	"github.com/clivern/gunner/core/service"
+	"github.com/clivern/knot/core/controller"
+	"github.com/clivern/knot/core/service"
 
 	"github.com/drone/envsubst"
 	"github.com/labstack/echo-contrib/prometheus"

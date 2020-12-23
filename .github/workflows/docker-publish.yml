@@ -15,7 +15,7 @@ on:
 
 env:
   # Change variable to your image's name.
-  IMAGE_NAME: gunner
+  IMAGE_NAME: knot
 
 jobs:
   # Run tests.

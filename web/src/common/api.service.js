@@ -6,8 +6,8 @@ const ApiService = {
 	getURL(endpoint) {
 		let apiURL = "";
 
-		if (process.env.GUNNER_DASHBOARD_URL) {
-			apiURL = process.env.GUNNER_DASHBOARD_URL.replace(/\/$/, "");
+		if (process.env.KNOT_DASHBOARD_URL) {
+			apiURL = process.env.KNOT_DASHBOARD_URL.replace(/\/$/, "");
 		}
 
 		return apiURL + endpoint;

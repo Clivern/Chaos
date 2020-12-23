@@ -1,4 +1,4 @@
-module github.com/clivern/gunner
+module github.com/clivern/knot
 
 go 1.17
 

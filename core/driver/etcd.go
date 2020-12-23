@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/clivern/gunner/core/util"
+	"github.com/clivern/knot/core/util"
 
 	"github.com/spf13/viper"
 	"go.etcd.io/etcd/client/v3"

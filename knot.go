@@ -7,7 +7,7 @@ package main
 import (
 	"embed"
 
-	"github.com/clivern/gunner/cmd"
+	"github.com/clivern/knot/cmd"
 )
 
 var (

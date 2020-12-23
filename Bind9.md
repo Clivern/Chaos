@@ -1,6 +1,6 @@
 <p align="center">
-    <img alt="Gunner Logo" src="/static/logo.png?v=1.0.0" width="240" />
-    <h3 align="center">Gunner</h3>
+    <img alt="Knot Logo" src="/static/logo.png?v=1.0.0" width="240" />
+    <h3 align="center">Knot</h3>
 </p>
 <br/>
 <p align="center">

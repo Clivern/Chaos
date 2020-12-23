@@ -67,37 +67,37 @@ WantedBy=multi-user.target" > /etc/systemd/system/etcd.service
     echo "etcd installation done!"
 }
 
-function install_gunner {
-    echo "Installing gunner ..."
+function install_knot {
+    echo "Installing knot ..."
 
-    mkdir -p /etc/gunner
+    mkdir -p /etc/knot
 
-    cd /etc/gunner
+    cd /etc/knot
 
-    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/gunner/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
+    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/knot/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
 
-    curl -sL https://github.com/Clivern/gunner/releases/download/v{$LATEST_VERSION}/gunner_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
+    curl -sL https://github.com/Clivern/knot/releases/download/v{$LATEST_VERSION}/knot_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
 
 
     echo "[Unit]
-Description=Gunner
-Documentation=https://github.com/Clivern/gunner
+Description=Knot
+Documentation=https://github.com/Clivern/knot
 
 [Service]
-ExecStart=/etc/gunner/gunner server -c /etc/gunner/config.prod.yml
+ExecStart=/etc/knot/knot server -c /etc/knot/config.prod.yml
 Restart=on-failure
 RestartSec=2
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/gunner.service
+WantedBy=multi-user.target" > /etc/systemd/system/knot.service
 
     systemctl daemon-reload
-    systemctl enable gunner.service
-    systemctl start gunner.service
+    systemctl enable knot.service
+    systemctl start knot.service
 
-    echo "Gunner installation done!"
+    echo "Knot installation done!"
 }
 
 install_dependencies
 install_etcd
-install_gunner
+install_knot

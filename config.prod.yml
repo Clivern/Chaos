@@ -1,44 +1,44 @@
 # App configs
 app:
   # App name
-  name: ${GUNNER_NAME:-gunner}
+  name: ${KNOT_NAME:-knot}
   # Env mode (dev or prod)
-  mode: ${GUNNER_MODE:-prod}
+  mode: ${KNOT_MODE:-prod}
   # HTTP port
-  port: ${GUNNER_PORT:-80}
+  port: ${KNOT_PORT:-80}
   # Hostname
-  hostname: ${GUNNER_HOSTNAME:-127.0.0.1}
+  hostname: ${KNOT_HOSTNAME:-127.0.0.1}
   # TLS configs
   tls:
-    status: ${GUNNER_TLS_STATUS:-off}
-    crt_path: ${GUNNER_TLS_PEMPATH:-cert/server.crt}
-    key_path: ${GUNNER_TLS_KEYPATH:-cert/server.key}
+    status: ${KNOT_TLS_STATUS:-off}
+    crt_path: ${KNOT_TLS_PEMPATH:-cert/server.crt}
+    key_path: ${KNOT_TLS_KEYPATH:-cert/server.key}
 
   # Global timeout
-  timeout: ${GUNNER_TIMEOUT:-50}
+  timeout: ${KNOT_TIMEOUT:-50}
 
   # Application Database
   database:
       # database driver
-      driver: ${GUNNER_DB_DRIVER:-etcd}
+      driver: ${KNOT_DB_DRIVER:-etcd}
 
       etcd:
         # etcd database name or prefix
-        databaseName: ${GUNNER_DB_ETCD_DB:-gunner}
+        databaseName: ${KNOT_DB_ETCD_DB:-knot}
         # etcd username
-        username: ${GUNNER_DB_ETCD_USERNAME:- }
+        username: ${KNOT_DB_ETCD_USERNAME:- }
         # etcd password
-        password: ${GUNNER_DB_ETCD_PASSWORD:- }
+        password: ${KNOT_DB_ETCD_PASSWORD:- }
         # etcd endpoints
-        endpoints: ${GUNNER_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
+        endpoints: ${KNOT_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
         # Timeout in seconds
         timeout: 30
 
   # Log configs
   log:
     # Log level, it can be debug, info, warn, error, panic, fatal
-    level: ${GUNNER_LOG_LEVEL:-info}
-    # Output can be stdout or abs path to log file /var/logs/gunner.log
-    output: ${GUNNER_LOG_OUTPUT:-/var/logs/gunner.log}
+    level: ${KNOT_LOG_LEVEL:-info}
+    # Output can be stdout or abs path to log file /var/logs/knot.log
+    output: ${KNOT_LOG_OUTPUT:-/var/logs/knot.log}
     # Format can be json
-    format: ${GUNNER_LOG_FORMAT:-json}
+    format: ${KNOT_LOG_FORMAT:-json}

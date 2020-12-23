@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/clivern/gunner/core/util"
-	"github.com/clivern/gunner/pkg"
+	"github.com/clivern/knot/core/util"
+	"github.com/clivern/knot/pkg"
 
 	"github.com/franela/goblin"
 	"github.com/spf13/viper"
