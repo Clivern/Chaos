@@ -11,4 +11,4 @@ records, then it updates the global integrity `UUID` and the local integrity `UU
 
 - If the master `Langmore` goes down, a new node will be the master. It will the figure out that
 the global integrity `UUID` is not equal the local integrity `UUID`. then it will start updating the
-`DNS` records of the `Bind9`.
+`DNS` records of the `Bind9` and make it a master.
