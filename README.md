@@ -1,7 +1,7 @@
 <p align="center">
     <img alt="Langmore Logo" src="/assets/logo.png?v=1.0.0" width="240" />
     <h3 align="center">Langmore</h3>
-    <p align="center">A Modern DNS Server</p>
+    <p align="center">Highly Available, Secure and Reliable DNS Server, Set up in Minutes.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Langmore/actions/workflows/lgtm.yml">
             <img src="https://github.com/Clivern/Langmore/actions/workflows/lgtm.yml/badge.svg"/>
@@ -26,6 +26,21 @@
 </p>
 
 Langmore is A Modern DNS Server. It provides features like Web Dashboard, REST API, Load Balancing, DNS Notify, Dynamic Update, Split DNS, IPv6, and more.
+
+
+## Documentation
+
+### Deployment
+
+Download [the latest langmore binary](https://github.com/Clivern/Langmore/releases). Make it executable from everywhere.
+
+```zsh
+$ export LANGMORE_LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/Langmore/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
+
+$ curl -sL https://github.com/Clivern/Langmore/releases/download/v{$LANGMORE_LATEST_VERSION}/langmore_{$LANGMORE_LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
+```
+
+Then install etcd cluster or single node, please refer to etcd docs or bin directory inside this repository.
 
 
 ## Versioning
