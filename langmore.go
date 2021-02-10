@@ -5,6 +5,8 @@
 package main
 
 import (
+	"embed"
+
 	"github.com/clivern/langmore/cmd"
 )
 
@@ -14,6 +16,9 @@ var (
 	date    = "unknown"
 	builtBy = "unknown"
 )
+
+//go:embed web/dist/*
+var static embed.FS
 
 func main() {
 	cmd.Version = version

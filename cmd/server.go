@@ -138,8 +138,14 @@ var serverCmd = &cobra.Command{
 			return c.String(http.StatusNoContent, "")
 		})
 
-		e.GET("/", controller.Health)
+		e.Static("/css", "web/dist/css")
+		e.Static("/js", "web/dist/js")
+		e.Static("/img", "web/dist/img")
+		e.File("/logo.png", "web/dist/logo.png")
+		e.File("/", "web/dist/index.html")
+
 		e.GET("/_health", controller.Health)
+		e.GET("/_ready", controller.Ready)
 
 		go controller.Daemon()
 

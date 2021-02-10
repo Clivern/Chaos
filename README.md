@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Langmore Logo" src="/assets/logo.png?v=1.0.0" width="240" />
+    <img alt="Langmore Logo" src="/static/logo.png?v=1.0.0" width="240" />
     <h3 align="center">Langmore</h3>
     <p align="center">Highly Available, Secure and Reliable DNS Server, Set up in Minutes.</p>
     <p align="center">
@@ -22,7 +22,7 @@
 </p>
 <br/>
 <p align="center">
-    <img src="/assets/chart.png?v=1.1.0" width="100%" />
+    <img src="/static/chart.png?v=1.1.0" width="100%" />
 </p>
 
 Langmore is A Modern DNS Server. It provides features like Web Dashboard, REST API, Load Balancing, DNS Notify, Dynamic Update, Split DNS, IPv6, and more.

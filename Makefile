@@ -1,6 +1,9 @@
 go           ?= go
 gofmt        ?= $(go)fmt
 pkgs          = ./...
+npm          ?= npm
+npx          ?= npx
+pkger        ?= pkger
 
 
 help: Makefile
@@ -104,6 +107,45 @@ coverage:
 	rm -f coverage.html cover.out
 	$(go) test -mod=readonly -coverprofile=cover.out $(pkgs)
 	go tool cover -html=cover.out -o coverage.html
+
+
+## serve_ui: Serve admin dashboard
+.PHONY: serve_ui
+serve_ui:
+	@echo ">> ============= Run Vuejs App ============= <<"
+	cd web;$(npm) run serve
+
+
+## build_ui: Builds admin dashboard for production
+.PHONY: build_ui
+build_ui:
+	@echo ">> ============= Build Vuejs App ============= <<"
+	cd web;$(npm) run build
+
+
+## check_ui_format: Check dashboard code format
+.PHONY: check_ui_format
+check_ui_format:
+	@echo ">> ============= Validate js format ============= <<"
+	cd web;$(npx) prettier  --check .
+
+
+## format_ui: Format dashboard code
+.PHONY: format_ui
+format_ui:
+	@echo ">> ============= Format js Code ============= <<"
+	cd web;$(npx) prettier  --write .
+
+
+## package: Package assets
+.PHONY: package
+package:
+	@echo ">> ============= Package Assets ============= <<"
+	-rm $(shell pwd)/web/.env
+	echo "LANGMORE_DASHBOARD_URL=" > $(shell pwd)/web/.env.dist
+	cd web;$(npm) run build
+	$(pkger) list -include $(shell pwd)/web/dist
+	$(pkger) -o cmd
 
 
 ## run: Run the Server
