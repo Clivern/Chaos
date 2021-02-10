@@ -42,6 +42,10 @@ $ curl -sL https://github.com/Clivern/Langmore/releases/download/v{$LANGMORE_LAT
 
 Then install etcd cluster or single node, please refer to etcd docs or bin directory inside this repository.
 
+## Architecture
+
+For more in depth explaination how langmore single and multi (cluster) setup works, Please check this [document](Architecture.md).
+
 
 ## Versioning
 
