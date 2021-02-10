@@ -23,16 +23,16 @@ app:
       driver: ${LANGMORE_DB_DRIVER:-etcd}
 
       etcd:
-          # etcd database name or prefix
-          databaseName: ${LANGMORE_DB_ETCD_DB:-walrus}
-          # etcd username
-          username: ${LANGMORE_DB_ETCD_USERNAME:- }
-          # etcd password
-          password: ${LANGMORE_DB_ETCD_PASSWORD:- }
-          # etcd endpoints
-          endpoints: ${LANGMORE_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
-          # Timeout in seconds
-          timeout: 30
+        # etcd database name or prefix
+        databaseName: ${LANGMORE_DB_ETCD_DB:-langmore}
+        # etcd username
+        username: ${LANGMORE_DB_ETCD_USERNAME:- }
+        # etcd password
+        password: ${LANGMORE_DB_ETCD_PASSWORD:- }
+        # etcd endpoints
+        endpoints: ${LANGMORE_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
+        # Timeout in seconds
+        timeout: 30
 
   # Log configs
   log:
