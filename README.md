@@ -25,7 +25,7 @@
     <img src="/static/chart.png?v=1.1.0" width="100%" />
 </p>
 
-Langmore is A Modern DNS Server. It provides features like Web Dashboard, REST API, Load Balancing, DNS Notify, Dynamic Update, Split DNS, IPv6, and more.
+Langmore is a Highly Available, Secure and Reliable DNS Server. It provides features like Web Dashboard, REST API, Load Balancing, DNS Notify, Dynamic Update, Split DNS, IPv6, and more.
 
 
 ## Documentation
