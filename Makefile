@@ -3,7 +3,6 @@ gofmt        ?= $(go)fmt
 pkgs          = ./...
 npm          ?= npm
 npx          ?= npx
-pkger        ?= pkger
 
 
 help: Makefile
@@ -144,8 +143,6 @@ package:
 	-rm $(shell pwd)/web/.env
 	echo "LANGMORE_DASHBOARD_URL=" > $(shell pwd)/web/.env.dist
 	cd web;$(npm) run build
-	$(pkger) list -include $(shell pwd)/web/dist
-	$(pkger) -o cmd
 
 
 ## run: Run the Server
