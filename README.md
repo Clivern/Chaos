@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Langmore Logo" src="/assets/logo.png?v=1.0.0" width="180" />
+    <img alt="Langmore Logo" src="/assets/logo.png?v=1.0.0" width="240" />
     <h3 align="center">Langmore</h3>
     <p align="center">A Modern DNS Server</p>
     <p align="center">
