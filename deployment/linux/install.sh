@@ -1,9 +1,18 @@
 #!/bin/bash
 
+
+function dependencies {
+    apt-get update
+
+    apt-get upgrade -y
+
+    apt-get install jq bind9 -y
+}
+
 function langmore {
     echo "Installing langmore ..."
 
-    apt-get install jq -y
+    mkdir -p /etc/langmore
 
     cd /etc/langmore
 
@@ -30,5 +39,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/langmore.service
 
     echo "langmore installation done!"
 }
+
+dependencies
 
 langmore
