@@ -3,8 +3,8 @@
     <h3 align="center">Langmore</h3>
     <p align="center">A Modern DNS Server</p>
     <p align="center">
-        <a href="https://github.com/Clivern/Langmore/actions/workflows/build.yml">
-            <img src="https://github.com/Clivern/Langmore/actions/workflows/build.yml/badge.svg"/>
+        <a href="https://github.com/Clivern/Langmore/actions/workflows/lgtm.yml">
+            <img src="https://github.com/Clivern/Langmore/actions/workflows/lgtm.yml/badge.svg"/>
         </a>
         <a href="https://github.com/Clivern/Langmore/releases">
             <img src="https://img.shields.io/badge/Version-v1.0.0-red.svg">
