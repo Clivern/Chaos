@@ -7,6 +7,7 @@ package cmd
 import (
 	"bytes"
 	"fmt"
+	"io/fs"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -62,13 +63,13 @@ var serverCmd = &cobra.Command{
 			))
 		}
 
-		fs := service.NewFileSystem()
+		fys := service.NewFileSystem()
 
 		if viper.GetString("app.log.output") != "stdout" {
 			dir, _ := filepath.Split(viper.GetString("app.log.output"))
 
-			if !fs.DirExists(dir) {
-				if err := fs.EnsureDir(dir, 775); err != nil {
+			if !fys.DirExists(dir) {
+				if err := fys.EnsureDir(dir, 775); err != nil {
 					panic(fmt.Sprintf(
 						"Directory [%s] creation failed with error: %s",
 						dir,
@@ -77,7 +78,7 @@ var serverCmd = &cobra.Command{
 				}
 			}
 
-			if !fs.FileExists(viper.GetString("app.log.output")) {
+			if !fys.FileExists(viper.GetString("app.log.output")) {
 				f, err := os.Create(viper.GetString("app.log.output"))
 				if err != nil {
 					panic(fmt.Sprintf(
@@ -138,14 +139,20 @@ var serverCmd = &cobra.Command{
 			return c.String(http.StatusNoContent, "")
 		})
 
-		e.Static("/css", "web/dist/css")
-		e.Static("/js", "web/dist/js")
-		e.Static("/img", "web/dist/img")
-		e.File("/logo.png", "web/dist/logo.png")
-		e.File("/", "web/dist/index.html")
+		dist, err := fs.Sub(Static, "web/dist")
+
+		if err != nil {
+			panic(fmt.Sprintf(
+				"Error while accessing dist files: %s",
+				err.Error(),
+			))
+		}
+
+		staticServer := http.StripPrefix("/", http.FileServer(http.FS(dist)))
 
 		e.GET("/_health", controller.Health)
 		e.GET("/_ready", controller.Ready)
+		e.GET("/*", echo.WrapHandler(staticServer))
 
 		go controller.Daemon()
 

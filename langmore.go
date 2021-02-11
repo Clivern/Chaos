@@ -25,6 +25,7 @@ func main() {
 	cmd.Commit = commit
 	cmd.Date = date
 	cmd.BuiltBy = builtBy
+	cmd.Static = static
 
 	cmd.Execute()
 }
