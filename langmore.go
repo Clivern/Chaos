@@ -7,7 +7,7 @@ package main
 import (
 	"embed"
 
-	"github.com/clivern/langmore/cmd"
+	"github.com/clivern/gunner/cmd"
 )
 
 var (

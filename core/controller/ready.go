@@ -7,7 +7,7 @@ package controller
 import (
 	"net/http"
 
-	"github.com/clivern/langmore/core/driver"
+	"github.com/clivern/gunner/core/driver"
 
 	"github.com/labstack/echo/v4"
 	log "github.com/sirupsen/logrus"

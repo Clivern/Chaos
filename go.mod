@@ -1,4 +1,4 @@
-module github.com/clivern/langmore
+module github.com/clivern/gunner
 
 go 1.17
 

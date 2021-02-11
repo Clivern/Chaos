@@ -6,12 +6,12 @@
 		<img alt="logo" src="../assets/logo.png" width="340" />
 		<div class="hello">
 			<br />
-			<strong>Welcome to Langmore</strong>
+			<strong>Welcome to Gunner</strong>
 			<p>
 				If you have any suggestions, bug reports, or annoyances
 				<br />please report them to our
 				<a
-					href="https://github.com/clivern/langmore/issues"
+					href="https://github.com/clivern/gunner/issues"
 					target="_blank"
 					rel="noopener"
 					>issue tracker</a

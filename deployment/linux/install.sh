@@ -9,37 +9,37 @@ function dependencies {
     apt-get install jq bind9 -y
 }
 
-function langmore {
-    echo "Installing langmore ..."
+function gunner {
+    echo "Installing gunner ..."
 
-    mkdir -p /etc/langmore
+    mkdir -p /etc/gunner
 
-    cd /etc/langmore
+    cd /etc/gunner
 
-    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/langmore/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
+    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/gunner/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
 
-    curl -sL https://github.com/Clivern/langmore/releases/download/v{$LATEST_VERSION}/langmore_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
+    curl -sL https://github.com/Clivern/gunner/releases/download/v{$LATEST_VERSION}/gunner_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
 
 
     echo "[Unit]
-Description=Langmore
-Documentation=https://github.com/Clivern/langmore
+Description=Gunner
+Documentation=https://github.com/Clivern/gunner
 
 [Service]
-ExecStart=/etc/langmore/langmore server -c /etc/langmore/config.prod.yml
+ExecStart=/etc/gunner/gunner server -c /etc/gunner/config.prod.yml
 Restart=on-failure
 RestartSec=2
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/langmore.service
+WantedBy=multi-user.target" > /etc/systemd/system/gunner.service
 
     systemctl daemon-reload
-    systemctl enable langmore.service
-    systemctl start langmore.service
+    systemctl enable gunner.service
+    systemctl start gunner.service
 
-    echo "langmore installation done!"
+    echo "gunner installation done!"
 }
 
 dependencies
 
-langmore
+gunner

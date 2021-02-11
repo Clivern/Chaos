@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/clivern/langmore/pkg"
+	"github.com/clivern/gunner/pkg"
 
 	"github.com/franela/goblin"
 )

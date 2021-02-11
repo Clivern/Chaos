@@ -14,11 +14,11 @@ import (
 var config string
 
 var rootCmd = &cobra.Command{
-	Use: "langmore",
+	Use: "gunner",
 	Short: `🐺 A Modern DNS Server
 
 If you have any suggestions, bug reports, or annoyances please report
-them to our issue tracker at <https://github.com/Clivern/langmore/issues>`,
+them to our issue tracker at <https://github.com/Clivern/gunner/issues>`,
 }
 
 // Execute runs cmd tool

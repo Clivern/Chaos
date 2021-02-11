@@ -1,44 +1,44 @@
 # App configs
 app:
   # App name
-  name: ${LANGMORE_NAME:-langmore}
+  name: ${GUNNER_NAME:-gunner}
   # Env mode (dev or prod)
-  mode: ${LANGMORE_MODE:-prod}
+  mode: ${GUNNER_MODE:-prod}
   # HTTP port
-  port: ${LANGMORE_PORT:-80}
+  port: ${GUNNER_PORT:-80}
   # Hostname
-  hostname: ${LANGMORE_HOSTNAME:-127.0.0.1}
+  hostname: ${GUNNER_HOSTNAME:-127.0.0.1}
   # TLS configs
   tls:
-    status: ${LANGMORE_TLS_STATUS:-off}
-    crt_path: ${LANGMORE_TLS_PEMPATH:-cert/server.crt}
-    key_path: ${LANGMORE_TLS_KEYPATH:-cert/server.key}
+    status: ${GUNNER_TLS_STATUS:-off}
+    crt_path: ${GUNNER_TLS_PEMPATH:-cert/server.crt}
+    key_path: ${GUNNER_TLS_KEYPATH:-cert/server.key}
 
   # Global timeout
-  timeout: ${LANGMORE_TIMEOUT:-50}
+  timeout: ${GUNNER_TIMEOUT:-50}
 
   # Application Database
   database:
       # database driver
-      driver: ${LANGMORE_DB_DRIVER:-etcd}
+      driver: ${GUNNER_DB_DRIVER:-etcd}
 
       etcd:
         # etcd database name or prefix
-        databaseName: ${LANGMORE_DB_ETCD_DB:-langmore}
+        databaseName: ${GUNNER_DB_ETCD_DB:-gunner}
         # etcd username
-        username: ${LANGMORE_DB_ETCD_USERNAME:- }
+        username: ${GUNNER_DB_ETCD_USERNAME:- }
         # etcd password
-        password: ${LANGMORE_DB_ETCD_PASSWORD:- }
+        password: ${GUNNER_DB_ETCD_PASSWORD:- }
         # etcd endpoints
-        endpoints: ${LANGMORE_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
+        endpoints: ${GUNNER_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
         # Timeout in seconds
         timeout: 30
 
   # Log configs
   log:
     # Log level, it can be debug, info, warn, error, panic, fatal
-    level: ${LANGMORE_LOG_LEVEL:-info}
-    # Output can be stdout or abs path to log file /var/logs/langmore.log
-    output: ${LANGMORE_LOG_OUTPUT:-/var/logs/langmore.log}
+    level: ${GUNNER_LOG_LEVEL:-info}
+    # Output can be stdout or abs path to log file /var/logs/gunner.log
+    output: ${GUNNER_LOG_OUTPUT:-/var/logs/gunner.log}
     # Format can be json
-    format: ${LANGMORE_LOG_FORMAT:-json}
+    format: ${GUNNER_LOG_FORMAT:-json}

@@ -9,7 +9,7 @@ RUN apt-get install curl -y
 
 WORKDIR /app
 
-RUN curl -sL https://github.com/Clivern/langmore/releases/download/v${APP_VERSION}/langmore_${APP_VERSION}_Linux_x86_64.tar.gz | tar xz
+RUN curl -sL https://github.com/Clivern/gunner/releases/download/v${APP_VERSION}/gunner_${APP_VERSION}_Linux_x86_64.tar.gz | tar xz
 RUN rm LICENSE
 RUN rm README.md
 
@@ -20,6 +20,6 @@ EXPOSE 8000
 VOLUME /app/configs
 VOLUME /app/var
 
-RUN ./langmore version
+RUN ./gunner version
 
-CMD ["./langmore", "server", "-c", "/app/configs/config.dist.yml"]
+CMD ["./gunner", "server", "-c", "/app/configs/config.dist.yml"]

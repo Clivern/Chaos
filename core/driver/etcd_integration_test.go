@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/clivern/langmore/core/util"
-	"github.com/clivern/langmore/pkg"
+	"github.com/clivern/gunner/core/util"
+	"github.com/clivern/gunner/pkg"
 
 	"github.com/franela/goblin"
 	"github.com/spf13/viper"
