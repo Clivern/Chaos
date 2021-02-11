@@ -3,11 +3,11 @@
     <h3 align="center">Gunner</h3>
     <p align="center">Highly Available, Secure and Reliable DNS Server, Set up in Minutes.</p>
     <p align="center">
-        <a href="https://github.com/Clivern/Peanut/actions/workflows/api_lgtm.yml">
-            <img src="https://github.com/Clivern/Peanut/actions/workflows/api_lgtm.yml/badge.svg">
+        <a href="https://github.com/Clivern/Peanut/actions/workflows/api.yml">
+            <img src="https://github.com/Clivern/Peanut/actions/workflows/api.yml/badge.svg">
         </a>
-        <a href="https://github.com/Clivern/Peanut/actions/workflows/ui_lgtm.yml">
-            <img src="https://github.com/Clivern/Peanut/actions/workflows/ui_lgtm.yml/badge.svg">
+        <a href="https://github.com/Clivern/Peanut/actions/workflows/ui.yml">
+            <img src="https://github.com/Clivern/Peanut/actions/workflows/ui.yml/badge.svg">
         </a>
         <a href="https://github.com/Clivern/Gunner/releases">
             <img src="https://img.shields.io/badge/Version-v1.0.0-red.svg">
