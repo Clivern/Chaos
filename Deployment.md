@@ -1,4 +1,13 @@
-### Deployment
+<p align="center">
+    <img alt="Gunner Logo" src="/static/logo.png?v=1.0.0" width="240" />
+    <h3 align="center">Gunner</h3>
+</p>
+<br/>
+<p align="center">
+    <img src="/static/chart.png?v=1.1.0" width="100%" />
+</p>
+
+## Deployment
 
 Download [the latest gunner binary](https://github.com/Clivern/Gunner/releases). Make it executable from everywhere.
 
