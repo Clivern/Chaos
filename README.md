@@ -32,19 +32,12 @@ Gunner is a Highly Available, Secure and Reliable DNS Server. It provides featur
 
 ### Deployment
 
-Download [the latest gunner binary](https://github.com/Clivern/Gunner/releases). Make it executable from everywhere.
+In order to deploy gunner, Please follow this [guide](Deployment.md).
 
-```zsh
-$ export GUNNER_LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/Gunner/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
-
-$ curl -sL https://github.com/Clivern/Gunner/releases/download/v{$GUNNER_LATEST_VERSION}/gunner_{$GUNNER_LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
-```
-
-Then install etcd cluster or single node, please refer to etcd docs or bin directory inside this repository.
 
 ## Architecture
 
-For more in depth explaination how gunner single and multi (cluster) setup works, Please check this [document](Architecture.md).
+For more in depth explaination how gunner single-node and multi-nodes (cluster) setup works, Please check this [document](Architecture.md).
 
 
 ## Versioning
