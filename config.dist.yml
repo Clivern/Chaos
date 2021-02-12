@@ -5,7 +5,7 @@ app:
   # Env mode (dev or prod)
   mode: ${GUNNER_MODE:-dev}
   # HTTP port
-  port: ${GUNNER_PORT:-8080}
+  port: ${GUNNER_PORT:-8000}
   # Hostname
   hostname: ${GUNNER_HOSTNAME:-127.0.0.1}
   # TLS configs

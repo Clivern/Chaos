@@ -1,19 +1,25 @@
-FROM ubuntu:22.04
+FROM golang:1.18 as build
 
-ARG APP_VERSION=1.0.0
-
-RUN mkdir -p /app/configs
-RUN mkdir -p /app/var/logs
+RUN mkdir -p /app
 RUN apt-get update
-RUN apt-get install curl -y
 
 WORKDIR /app
 
-RUN curl -sL https://github.com/Clivern/gunner/releases/download/v${APP_VERSION}/gunner_${APP_VERSION}_Linux_x86_64.tar.gz | tar xz
-RUN rm LICENSE
-RUN rm README.md
+COPY ./ ./
 
-COPY ./config.dist.yml /app/configs/
+RUN go build -v -ldflags="-X 'main.version=v1.0.0'" gunner.go
+
+FROM ubuntu:22.04
+
+RUN apt-get update
+
+RUN mkdir -p /app/configs
+RUN mkdir -p /app/var/logs
+
+WORKDIR /app
+
+COPY --from=build /app/gunner /app/gunner
+COPY --from=build /app/config.dist.yml /app/configs/config.dist.yml
 
 EXPOSE 8000
 
