@@ -14,19 +14,19 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-// TestUnitHealthEndpoint
-func TestUnitHealthEndpoint(t *testing.T) {
+// TestIntegrationReadyEndpoint
+func TestIntegrationReadyEndpoint(t *testing.T) {
 	g := goblin.Goblin(t)
 
-	g.Describe("#HealthEndpoint", func() {
+	g.Describe("#ReadyEndpoint", func() {
 		g.It("It should satisfy all provided test cases", func() {
 			e := echo.New()
-			req := httptest.NewRequest(http.MethodGet, "/_health", nil)
+			req := httptest.NewRequest(http.MethodGet, "/_ready", nil)
 			rec := httptest.NewRecorder()
 			c := e.NewContext(req, rec)
-			c.SetPath("/_health")
+			c.SetPath("/_ready")
 
-			err := Health(c)
+			err := Ready(c)
 
 			g.Assert(err).Equal(nil)
 			g.Assert(rec.Code).Equal(http.StatusOK)

@@ -18,6 +18,6 @@ func Health(c echo.Context) error {
 	}).Info(`Health check`)
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"status": "i am ok",
+		"status": "ok",
 	})
 }
