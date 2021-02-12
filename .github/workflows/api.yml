@@ -24,6 +24,10 @@ jobs:
           export PATH=${PATH}:`go env GOPATH`/bin
           make install_revive
 
+      - name: Install etcd server
+        run: |
+          ./bin/local_etcd_ubuntu
+
       - name: Run make ci
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin

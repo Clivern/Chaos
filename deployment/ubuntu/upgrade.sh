@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function gunner {
+function upgrade_gunner {
     echo "Upgrade gunner ..."
 
     cd /etc/gunner
@@ -15,7 +15,7 @@ function gunner {
 
     systemctl restart gunner
 
-    echo "gunner upgrade done!"
+    echo "Gunner upgrade done!"
 }
 
-gunner
+upgrade_gunner

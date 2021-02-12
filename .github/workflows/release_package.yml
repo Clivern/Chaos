@@ -20,4 +20,4 @@ jobs:
 
       - name: Update checksum database
         run: |
-          ./bin/release.sh
+          ./bin/release

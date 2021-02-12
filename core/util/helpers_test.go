@@ -16,8 +16,8 @@ import (
 	"github.com/franela/goblin"
 )
 
-// TestHelpers
-func TestHelpers(t *testing.T) {
+// TesUnitHelpers
+func TesUnitHelpers(t *testing.T) {
 	baseDir := pkg.GetBaseDir("cache")
 	pkg.LoadConfigs(fmt.Sprintf("%s/config.dist.yml", baseDir))
 
