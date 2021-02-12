@@ -26,7 +26,7 @@ jobs:
 
       - name: Install etcd server
         run: |
-          ./bin/local_etcd_ubuntu
+          ./bin/install_etcd
 
       - name: Run make ci
         run: |
