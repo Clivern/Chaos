@@ -31,10 +31,10 @@ func (e *Etcd) Connect() error {
 	var err error
 
 	e.client, err = clientv3.New(clientv3.Config{
-		Endpoints:   strings.Split(viper.GetString(fmt.Sprintf("%s.database.etcd.endpoints", viper.GetString("role"))), ","),
-		DialTimeout: time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role")))) * time.Second,
-		Username:    viper.GetString(fmt.Sprintf("%s.database.etcd.username", viper.GetString("role"))),
-		Password:    viper.GetString(fmt.Sprintf("%s.database.etcd.password", viper.GetString("role"))),
+		Endpoints:   strings.Split(viper.GetString("app.database.etcd.endpoints"), ","),
+		DialTimeout: time.Duration(viper.GetInt("app.database.etcd.timeout")) * time.Second,
+		Username:    viper.GetString("app.database.etcd.username"),
+		Password:    viper.GetString("app.database.etcd.password"),
 	})
 
 	if err != nil {
@@ -53,7 +53,7 @@ func (e *Etcd) IsConnected() bool {
 func (e *Etcd) Put(key, value string) error {
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	_, err := e.client.Put(ctx, key, value)
@@ -71,7 +71,7 @@ func (e *Etcd) Put(key, value string) error {
 func (e *Etcd) PutWithLease(key, value string, leaseID clientv3.LeaseID) error {
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	_, err := e.client.Put(ctx, key, value, clientv3.WithLease(leaseID))
@@ -91,7 +91,7 @@ func (e *Etcd) Get(key string) (map[string]string, error) {
 
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	resp, err := e.client.Get(ctx, key, clientv3.WithPrefix())
@@ -113,7 +113,7 @@ func (e *Etcd) Get(key string) (map[string]string, error) {
 func (e *Etcd) Delete(key string) (int64, error) {
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	dresp, err := e.client.Delete(ctx, key, clientv3.WithPrefix())
@@ -133,7 +133,7 @@ func (e *Etcd) CreateLease(seconds int64) (clientv3.LeaseID, error) {
 
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	resp, err := e.client.Grant(ctx, seconds)
@@ -151,7 +151,7 @@ func (e *Etcd) CreateLease(seconds int64) (clientv3.LeaseID, error) {
 func (e *Etcd) RenewLease(leaseID clientv3.LeaseID) error {
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	_, err := e.client.KeepAliveOnce(ctx, leaseID)
@@ -172,7 +172,7 @@ func (e *Etcd) GetKeys(key string) ([]string, error) {
 
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
-		time.Duration(viper.GetInt(fmt.Sprintf("%s.database.etcd.timeout", viper.GetString("role"))))*time.Second,
+		time.Duration(viper.GetInt("app.database.etcd.timeout"))*time.Second,
 	)
 
 	resp, err := e.client.Get(ctx, key, clientv3.WithPrefix())
