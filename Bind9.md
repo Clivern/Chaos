@@ -24,8 +24,8 @@ options {
     recursion yes;
     allow-recursion { trusted; };
 
-    // This can be the server Public IP or Private IP (Private Network)
-    listen-on { 104.248.199.207; };
+    // This can be the Server Public IP or Private IP (Private Network)
+    listen-on { x.x.x.x; };
 
     allow-transfer { none; };
 
@@ -38,7 +38,12 @@ options {
 	// Uncomment the following block, and insert the addresses replacing
 	// the all-0's placeholder.
 	forwarders {
-		8.8.8.8;
+	    // Google Public DNS
+	    8.8.8.8;
+	    8.8.4.4;
+
+	    // Cloudflare DNS
+	    1.1.1.1;
 	};
 
 	//========================================================================
@@ -52,7 +57,9 @@ options {
 };
 
 acl "trusted" {
-	77.168.245.136;
+	// localhost (RFC 3330) - Loopback-Device addresses    127.0.0.0 - 127.255.255.255
+	127.0.0.0/8;
+	x.x.x.x;
 };
 ```
 
