@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Gunner Logo" src="/static/logo1.png?v=1.0.0" width="240" />
+    <img alt="Gunner Logo" src="/static/logo.png?v=1.0.0" width="200" />
     <h3 align="center">Gunner</h3>
     <p align="center">Highly Available, Secure and Reliable DNS Server, Set up in Minutes.</p>
     <p align="center">

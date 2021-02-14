@@ -2,10 +2,10 @@
 
 <template>
 	<div class="home">
-		<br />
-		<img alt="logo" src="../assets/logo.png" width="340" />
+		<br /><br /><br />
+		<img alt="logo" src="../assets/logo.png" width="200" />
 		<div class="hello">
-			<br />
+			<br /><br />
 			<strong>Welcome to Gunner</strong>
 			<p>
 				If you have any suggestions, bug reports, or annoyances
