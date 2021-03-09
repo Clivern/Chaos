@@ -1,7 +1,7 @@
 <p align="center">
     <img alt="Knot Logo" src="/static/logo.png?v=1.0.0" width="200" />
     <h3 align="center">Knot</h3>
-    <p align="center">A Secure and Reliable Terraform Cloud, Set up in Minutes.</p>
+    <p align="center">A Secure and Reliable Kubernetes Monitoring System, Set up in Minutes.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Knot/actions/workflows/api.yml">
             <img src="https://github.com/Clivern/Knot/actions/workflows/api.yml/badge.svg">
@@ -22,10 +22,6 @@
             <img src="https://img.shields.io/badge/LICENSE-MIT-orange.svg">
         </a>
     </p>
-</p>
-<br/>
-<p align="center">
-    <img src="/static/chart.png?v=1.1.0" width="100%" />
 </p>
 
 

@@ -154,8 +154,6 @@ var serverCmd = &cobra.Command{
 		e.GET("/_ready", controller.Ready)
 		e.GET("/*", echo.WrapHandler(staticServer))
 
-		go controller.Daemon()
-
 		var runerr error
 
 		if viper.GetBool("app.tls.status") {
