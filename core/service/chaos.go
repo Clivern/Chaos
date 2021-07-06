@@ -82,6 +82,7 @@ func (c *Chaos) LoadChaos() {
 				log.WithFields(log.Fields{
 					"roleId":   role.ID,
 					"roleName": role.Name,
+					"type":     "automated_event",
 					"command": fmt.Sprintf(
 						"stress --cpu %s --io %s --vm %s --hdd %s --timeout %s",
 						role.Value["sys_load_cpu"],
@@ -142,6 +143,7 @@ func (c *Chaos) NetworkChaos() {
 				log.WithFields(log.Fields{
 					"roleId":   role.ID,
 					"roleName": role.Name,
+					"type":     "automated_event",
 					"command": fmt.Sprintf(
 						"tc qdisc del dev %s root",
 						role.Value["net_interface"],
@@ -158,6 +160,7 @@ func (c *Chaos) NetworkChaos() {
 					log.WithFields(log.Fields{
 						"roleId":   role.ID,
 						"roleName": role.Name,
+						"type":     "automated_event",
 						"command": fmt.Sprintf(
 							"tc qdisc add dev %s root netem delay %s %s",
 							role.Value["net_interface"],
@@ -179,6 +182,7 @@ func (c *Chaos) NetworkChaos() {
 					log.WithFields(log.Fields{
 						"roleId":   role.ID,
 						"roleName": role.Name,
+						"type":     "automated_event",
 						"command": fmt.Sprintf(
 							"tc qdisc add dev %s root netem loss %s",
 							role.Value["net_interface"],
@@ -198,6 +202,7 @@ func (c *Chaos) NetworkChaos() {
 					log.WithFields(log.Fields{
 						"roleId":   role.ID,
 						"roleName": role.Name,
+						"type":     "automated_event",
 						"command": fmt.Sprintf(
 							"tc qdisc add dev %s root netem corrupt %s",
 							role.Value["net_interface"],
@@ -217,6 +222,7 @@ func (c *Chaos) NetworkChaos() {
 					log.WithFields(log.Fields{
 						"roleId":   role.ID,
 						"roleName": role.Name,
+						"type":     "automated_event",
 						"command": fmt.Sprintf(
 							"tc qdisc add dev %s root netem duplicate %s",
 							role.Value["net_interface"],
@@ -240,6 +246,7 @@ func (c *Chaos) NetworkChaos() {
 				log.WithFields(log.Fields{
 					"roleId":   role.ID,
 					"roleName": role.Name,
+					"type":     "automated_event",
 					"command": fmt.Sprintf(
 						"tc qdisc del dev %s root",
 						role.Value["net_interface"],
@@ -291,6 +298,7 @@ func (c *Chaos) RandomReboot() {
 						log.WithFields(log.Fields{
 							"roleId":   role.ID,
 							"roleName": role.Name,
+							"type":     "automated_event",
 						}).Info(`Reboot command succeeded`)
 					}
 				} else {
