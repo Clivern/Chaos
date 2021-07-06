@@ -3,22 +3,22 @@
     <h3 align="center">Chaos</h3>
     <p align="center">A Server Chaos Maker, Set up in Minutes.</p>
     <p align="center">
-        <a href="https://github.com/Clivern/Chaos/actions/workflows/api.yml">
-            <img src="https://github.com/Clivern/Chaos/actions/workflows/api.yml/badge.svg">
+        <a href="https://github.com/clivern/chaos/actions/workflows/api.yml">
+            <img src="https://github.com/clivern/chaos/actions/workflows/api.yml/badge.svg">
         </a>
-        <a href="https://github.com/Clivern/Chaos/actions/workflows/ui.yml">
-            <img src="https://github.com/Clivern/Chaos/actions/workflows/ui.yml/badge.svg">
+        <a href="https://github.com/clivern/chaos/actions/workflows/ui.yml">
+            <img src="https://github.com/clivern/chaos/actions/workflows/ui.yml/badge.svg">
         </a>
-        <a href="https://github.com/Clivern/Chaos/releases">
+        <a href="https://github.com/clivern/chaos/releases">
             <img src="https://img.shields.io/badge/Version-v0.1.0-red.svg">
         </a>
-        <a href="https://goreportcard.com/report/github.com/Clivern/Chaos">
-            <img src="https://goreportcard.com/badge/github.com/clivern/Chaos?v=1.0.0">
+        <a href="https://goreportcard.com/report/github.com/clivern/chaos">
+            <img src="https://goreportcard.com/badge/github.com/clivern/chaos?v=1.0.0">
         </a>
         <a href="https://godoc.org/github.com/clivern/chaos">
             <img src="https://godoc.org/github.com/clivern/chaos?status.svg">
         </a>
-        <a href="https://github.com/Clivern/Chaos/blob/main/LICENSE">
+        <a href="https://github.com/clivern/chaos/blob/main/LICENSE">
             <img src="https://img.shields.io/badge/LICENSE-MIT-orange.svg">
         </a>
     </p>
@@ -32,33 +32,13 @@ This tool can cause a chaos to running servers. It can cause random reboots, tra
 To install `Chaos`, Use the following script:
 
 ```zsh
-$ bash < <(curl -s https://raw.githubusercontent.com/Clivern/Chaos/main/deployment/ubuntu/install.sh)
+$ bash < <(curl -s https://raw.githubusercontent.com/clivern/chaos/main/deployment/ubuntu/install.sh)
 
 # Get The Public IP
 $ curl https://ipinfo.io/ip
 x.x.x.x
 ```
 
-### API Definitions
-
-To fetch roles
-
-```zsh
-$ curl -X GET -H "X-API-KEY: xxxx-xxxx-xxxx-xxxx" "http://localhost:8000/api/v1/role"
-```
-
-To Delete role
-
-```zsh
-$ curl -X DELETE -H "X-API-KEY: xxxx-xxxx-xxxx-xxxx" "http://localhost:8000/api/v1/role/$ID"
-```
-
-To create a role
-
-```zsh
-$ curl -X POST -H "X-API-KEY: xxxx-xxxx-xxxx-xxxx" "http://localhost:8000/api/v1/role" \
-    -d '{"name": "stress", "value": {"tool":"stress", "cpu":"3"}, "startAt": "2023-02-21T12:00:00Z","endAt": "2023-02-21T17:00:00Z"}'
-```
 
 ### Versioning
 
