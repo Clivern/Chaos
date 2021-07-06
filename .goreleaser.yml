@@ -6,7 +6,6 @@ archives:
       amd64: x86_64
       darwin: Darwin
       linux: Linux
-      windows: Windows
     files:
       - LICENSE
       - README.md
