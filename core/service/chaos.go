@@ -103,7 +103,11 @@ func (c *Chaos) LoadChaos() {
 
 				time.Sleep(30 * time.Second)
 			}
-		} else {
+		} else if role.EndAt.Unix() < time.Now().Unix() {
+			if role.Value["mode"] != "sys_load" {
+				continue
+			}
+
 			log.WithFields(log.Fields{
 				"roleId":   role.ID,
 				"roleName": role.Name,
@@ -230,7 +234,7 @@ func (c *Chaos) NetworkChaos() {
 				c.data.Set("network_role_id", role.ID)
 				time.Sleep(30 * time.Second)
 			}
-		} else {
+		} else if role.EndAt.Unix() < time.Now().Unix() {
 			if util.InArray(role.Value["mode"], []string{"network_delay", "packet_loss", "packet_corruption", "packet_duplication"}) {
 
 				log.WithFields(log.Fields{
@@ -246,6 +250,8 @@ func (c *Chaos) NetworkChaos() {
 					"qdisc del dev %s root",
 					role.Value["net_interface"],
 				))
+			} else {
+				continue
 			}
 
 			log.WithFields(log.Fields{
@@ -295,7 +301,12 @@ func (c *Chaos) RandomReboot() {
 				}
 				time.Sleep(COOLDOWN * time.Second)
 			}
-		} else {
+		} else if role.EndAt.Unix() < time.Now().Unix() {
+
+			if role.Value["mode"] != "random_reboots" {
+				continue
+			}
+
 			log.WithFields(log.Fields{
 				"roleId":   role.ID,
 				"roleName": role.Name,
