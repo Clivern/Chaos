@@ -62,3 +62,12 @@ func ConvertStringToMap(item string) (map[string]string, error) {
 
 	return m2, nil
 }
+
+func InArray(str string, arr []string) bool {
+	for _, s := range arr {
+		if s == str {
+			return true
+		}
+	}
+	return false
+}
