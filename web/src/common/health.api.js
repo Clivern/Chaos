@@ -2,12 +2,12 @@
 
 import ApiService from "./api.service.js";
 
-const getBackendReadiness = () => {
+const getReadiness = () => {
 	return ApiService.get("/_ready");
 };
 
-const getBackendHealth = () => {
+const getHealth = () => {
 	return ApiService.get("/_health");
 };
 
-export { getBackendReadiness, getBackendHealth };
+export { getReadiness, getHealth };

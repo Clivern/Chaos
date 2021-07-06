@@ -9,14 +9,9 @@
 			>
 			<template v-if="logged">
 				|
-				<router-link to="/hosts">
+				<router-link to="/roles">
 					<b-icon pack="fas" icon="server" size="is-small"> </b-icon>
-					Users</router-link
-				>
-				|
-				<router-link to="/settings">
-					<b-icon pack="fas" icon="cog" size="is-small"> </b-icon>
-					Settings</router-link
+					Roles</router-link
 				>
 				|
 				<a href="#" @click="logout">
@@ -60,30 +55,21 @@
 export default {
 	data() {
 		return {
-			logged:
-				localStorage.getItem("user_api_key") != null &&
-				localStorage.getItem("user_email") != null,
+			logged: localStorage.getItem("x_api_key") != null,
 		};
 	},
 	methods: {
 		logout() {
 			this.logged = false;
-			localStorage.removeItem("user_api_key");
-			localStorage.removeItem("user_email");
-			localStorage.removeItem("user_id");
-			localStorage.removeItem("user_name");
+			localStorage.removeItem("x_api_key");
 			this.$router.push("/login");
 		},
 		refreshState() {
-			this.logged =
-				localStorage.getItem("user_api_key") != null &&
-				localStorage.getItem("user_email") != null;
+			this.logged = localStorage.getItem("x_api_key") != null;
 		},
 	},
 	mounted() {
-		this.logged =
-			localStorage.getItem("user_api_key") != null &&
-			localStorage.getItem("user_email") != null;
+		this.logged = localStorage.getItem("x_api_key") != null;
 	},
 };
 </script>

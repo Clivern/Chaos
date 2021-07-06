@@ -11,7 +11,7 @@
 				If you have any suggestions, bug reports, or annoyances
 				<br />please report them to our
 				<a
-					href="https://github.com/clivern/chaos/issues"
+					href="https://github.com/Clivern/Chaos/issues"
 					target="_blank"
 					rel="noopener"
 					>issue tracker</a
@@ -22,7 +22,7 @@
 				Made with
 				<span class="icon has-text-danger"><i class="fas fa-heart"></i></span>
 				by
-				<a href="https://github.com/clivern" target="_blank" rel="noopener"
+				<a href="https://github.com/Clivern" target="_blank" rel="noopener"
 					>Clivern</a
 				><br />
 			</small>
@@ -43,8 +43,6 @@ export default {
 
 	data() {
 		return {
-			backend_status: "down",
-
 			// Loader
 			loader: {
 				isFullPage: true,
@@ -66,10 +64,9 @@ export default {
 
 		this.loading();
 
-		this.$store.dispatch("backend/fetchBackendReadiness").then(
+		this.$store.dispatch("health/fetchReadiness").then(
 			() => {
-				this.backend_status =
-					this.$store.getters["backend/getBackendReadiness"].status;
+				this.backend_status = this.$store.getters["health/getReadiness"].status;
 
 				this.loader.ref.close();
 			},

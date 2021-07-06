@@ -6,7 +6,7 @@
 
 <script>
 export default {
-	name: "SettingsPage",
+	name: "RolesPage",
 
 	data() {
 		return {};

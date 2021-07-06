@@ -38,3 +38,27 @@ func IsEmpty(item string) bool {
 	}
 	return false
 }
+
+// ConvertMapToString converts a map to a string
+func ConvertMapToString(item map[string]string) (string, error) {
+	b, err := json.Marshal(item)
+
+	if err != nil {
+		return "", err
+	}
+
+	return string(b), nil
+}
+
+// ConvertStringToMap converts a string into a map
+func ConvertStringToMap(item string) (map[string]string, error) {
+	var m2 map[string]string
+
+	err := json.Unmarshal([]byte(item), &m2)
+
+	if err != nil {
+		return m2, err
+	}
+
+	return m2, nil
+}

@@ -42,39 +42,40 @@ func TestUnitDatabase(t *testing.T) {
 
 	g.Describe("#Role", func() {
 		g.It("It should satisfy test cases", func() {
-			result := database.CreateRole(&model.Role{
-				Name:     "add_latency_for_3_minutes",
-				Value:    "{\"k\":\"v\"}",
-				ExpireAt: time.Now().Add(time.Second * 3600).UTC(),
+			role := database.CreateRole(&model.Role{
+				Name:    "add_latency_for_3_minutes",
+				Value:   "{\"k\":\"v\"}",
+				StartAt: time.Now().Add(time.Second * 1000).UTC(),
+				EndAt:   time.Now().Add(time.Second * 3600).UTC(),
 			})
 
-			g.Assert(result.ID > 0).Equal(true)
-			g.Assert(result.Name).Equal("add_latency_for_3_minutes")
-			g.Assert(result.Value).Equal("{\"k\":\"v\"}")
+			g.Assert(role.ID > 0).Equal(true)
+			g.Assert(role.Name).Equal("add_latency_for_3_minutes")
+			g.Assert(role.Value).Equal("{\"k\":\"v\"}")
 
-			result.Name = "add_latency_for_6_minutes"
+			role.Name = "add_latency_for_6_minutes"
 
-			result = database.UpdateRoleByID(result)
+			role = database.UpdateRoleByID(role)
 
-			g.Assert(result.Name).Equal("add_latency_for_6_minutes")
+			g.Assert(role.Name).Equal("add_latency_for_6_minutes")
 
-			result1 := database.GetRoleByID(result.ID)
+			role1 := database.GetRoleByID(role.ID)
 
-			g.Assert(result1.ID > 0).Equal(true)
-			g.Assert(result1.Name).Equal("add_latency_for_6_minutes")
-			g.Assert(result1.Value).Equal("{\"k\":\"v\"}")
+			g.Assert(role1.ID > 0).Equal(true)
+			g.Assert(role1.Name).Equal("add_latency_for_6_minutes")
+			g.Assert(role1.Value).Equal("{\"k\":\"v\"}")
 
-			result2 := database.GetRoles()[0]
+			role2 := database.GetRoles()[0]
 
-			g.Assert(result2.ID > 0).Equal(true)
-			g.Assert(result2.Name).Equal("add_latency_for_6_minutes")
-			g.Assert(result2.Value).Equal("{\"k\":\"v\"}")
+			g.Assert(role2.ID > 0).Equal(true)
+			g.Assert(role2.Name).Equal("add_latency_for_6_minutes")
+			g.Assert(role2.Value).Equal("{\"k\":\"v\"}")
 
-			database.DeleteRoleByID(result.ID)
+			database.DeleteRoleByID(role.ID)
 
-			result3 := database.GetRoleByID(result.ID)
+			role3 := database.GetRoleByID(role.ID)
 
-			g.Assert(result3.ID == 0).Equal(true)
+			g.Assert(role3.ID == 0).Equal(true)
 		})
 	})
 }

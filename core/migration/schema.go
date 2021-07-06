@@ -16,8 +16,11 @@ import (
 type Role struct {
 	gorm.Model
 
-	Name     string `json:"name"`
-	Value    string `json:"value"`
+	Name  string `json:"name"`
+	Value string `json:"value"`
+
+	StartAt  time.Time
+	EndAt    time.Time
 	ExpireAt time.Time
 }
 

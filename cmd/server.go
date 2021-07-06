@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/clivern/chaos/core/controller"
+	"github.com/clivern/chaos/core/module"
 	"github.com/clivern/chaos/core/service"
 
 	"github.com/drone/envsubst"
@@ -117,6 +118,25 @@ var serverCmd = &cobra.Command{
 			log.SetFormatter(&log.TextFormatter{})
 		}
 
+		context := &controller.GC{
+			Database: &module.Database{},
+		}
+
+		err = context.GetDatabase().AutoConnect()
+
+		if err != nil {
+			panic(err.Error())
+		}
+
+		// Migrate Database
+		success := context.GetDatabase().Migrate()
+
+		if !success {
+			panic("Error! Unable to migrate database tables.")
+		}
+
+		defer context.GetDatabase().Close()
+
 		viper.SetDefault("config", config)
 
 		e := echo.New()
@@ -152,6 +172,36 @@ var serverCmd = &cobra.Command{
 
 		e.GET("/_health", controller.Health)
 		e.GET("/_ready", controller.Ready)
+
+		e1 := e.Group("/api/v1")
+		{
+			e1.Use(middleware.KeyAuthWithConfig(middleware.KeyAuthConfig{
+				KeyLookup:  "header:x-api-key",
+				AuthScheme: "",
+				Validator: func(key string, c echo.Context) (bool, error) {
+					if !strings.Contains(c.Request().URL.Path, "/api/v1/") {
+						return true, nil
+					}
+
+					apiKey := viper.GetString("app.api.key")
+
+					return apiKey == "" || key == viper.GetString("app.api.key"), nil
+				},
+			}))
+
+			e1.GET("/role", func(c echo.Context) error {
+				return controller.GetRoles(c, context)
+			})
+
+			e1.POST("/role", func(c echo.Context) error {
+				return controller.CreateRole(c, context)
+			})
+
+			e1.DELETE("/role/:id", func(c echo.Context) error {
+				return controller.DeleteRole(c, context)
+			})
+		}
+
 		e.GET("/*", echo.WrapHandler(staticServer))
 
 		var runerr error
