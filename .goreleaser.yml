@@ -21,7 +21,6 @@ builds:
     goos:
       - linux
       - darwin
-      - windows
 
 changelog:
   filters:
