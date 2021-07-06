@@ -5,7 +5,7 @@ app:
   # Env mode (dev or prod)
   mode: ${CHAOS_MODE:-prod}
   # HTTP port
-  port: ${CHAOS_PORT:-80}
+  port: ${CHAOS_PORT:-8000}
   # Hostname
   hostname: ${CHAOS_HOSTNAME:-127.0.0.1}
   # TLS configs
