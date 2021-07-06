@@ -43,6 +43,7 @@ func NewChaos(gc *controller.GC) *Chaos {
 }
 
 // GetRoles get roles list
+// TODO: Refactor this
 func (c *Chaos) GetRoles() []model.RoleRequest {
 	roles := c.gc.GetDatabase().GetRoles()
 
@@ -71,6 +72,7 @@ func (c *Chaos) GetRoles() []model.RoleRequest {
 }
 
 // LoadChaos Load the system
+// TODO: Refactor this
 func (c *Chaos) LoadChaos() {
 	roles := c.GetRoles()
 
@@ -120,6 +122,7 @@ func (c *Chaos) LoadChaos() {
 }
 
 // NetworkChaos triggers network chaos
+// TODO: Refactor this
 func (c *Chaos) NetworkChaos() {
 	roles := c.GetRoles()
 
@@ -272,6 +275,7 @@ func (c *Chaos) NetworkChaos() {
 }
 
 // RandomReboot triggers random system reboots
+// TODO: Refactor this
 func (c *Chaos) RandomReboot() {
 	roles := c.GetRoles()
 

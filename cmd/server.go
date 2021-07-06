@@ -69,8 +69,9 @@ var serverCmd = &cobra.Command{
 		if viper.GetString("app.log.output") != "stdout" {
 			dir, _ := filepath.Split(viper.GetString("app.log.output"))
 
+			// Create dir
 			if !fys.DirExists(dir) {
-				if err := fys.EnsureDir(dir, 775); err != nil {
+				if err := fys.EnsureDir(dir, 0775); err != nil {
 					panic(fmt.Sprintf(
 						"Directory [%s] creation failed with error: %s",
 						dir,
@@ -79,6 +80,7 @@ var serverCmd = &cobra.Command{
 				}
 			}
 
+			// Create log file if not exists
 			if !fys.FileExists(viper.GetString("app.log.output")) {
 				f, err := os.Create(viper.GetString("app.log.output"))
 				if err != nil {
@@ -98,7 +100,11 @@ var serverCmd = &cobra.Command{
 			log.SetOutput(os.Stdout)
 			defaultLogger.Output = os.Stdout
 		} else {
-			f, _ := os.Create(viper.GetString("app.log.output"))
+			f, _ := os.OpenFile(
+				viper.GetString("app.log.output"),
+				os.O_APPEND|os.O_CREATE|os.O_WRONLY,
+				0775,
+			)
 			log.SetOutput(f)
 			defaultLogger.Output = f
 		}
@@ -139,6 +145,7 @@ var serverCmd = &cobra.Command{
 
 		chaos := service.NewChaos(context)
 
+		// TODO: Refactor this
 		go func() {
 			for {
 				chaos.LoadChaos()
