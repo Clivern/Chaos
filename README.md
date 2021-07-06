@@ -87,7 +87,3 @@ We are an open source, community-driven project so please feel free to join us. 
 © 2022, Clivern. Released under [MIT License](https://opensource.org/licenses/mit-license.php).
 
 **Chaos** is authored and maintained by [@clivern](http://github.com/clivern).
-
-
-
-curl -X POST -H "X-API-KEY: b08a1a8d-aefa-40fe-8473-59412ae46d11" "http://localhost:8000/api/v1/role" -d '{"name": "stress", "value": {"tool":"stress", "cpu":"3"}, "startAt": "2023-02-21T12:00:00Z","endAt": "2023-02-21T17:00:00Z"}
