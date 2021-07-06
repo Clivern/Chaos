@@ -189,6 +189,10 @@ var serverCmd = &cobra.Command{
 				},
 			}))
 
+			e1.GET("/net", func(c echo.Context) error {
+				return controller.GetNetInterfaces(c, context)
+			})
+
 			e1.GET("/role", func(c echo.Context) error {
 				return controller.GetRoles(c, context)
 			})

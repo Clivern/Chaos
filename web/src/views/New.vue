@@ -19,9 +19,29 @@
 						@input="onModeChange()"
 					>
 						<option value="stress">Stress</option>
-						<option value="network">Network</option>
+						<option value="network_delay">Network Delay</option>
+						<option value="network_loss">Network Loss</option>
 					</b-select>
 				</b-field>
+
+				<template
+					v-if="form.mode == 'network_delay' || form.mode == 'network_loss'"
+				>
+					<b-field label="Network Interface">
+						<b-select
+							placeholder="Select a network net_interface"
+							expanded
+							v-model="form.net_interface"
+						>
+							<option
+								v-for="net_interface in form.net_interfaces"
+								v-bind:key="net_interface"
+							>
+								{{ net_interface }}
+							</option>
+						</b-select>
+					</b-field>
+				</template>
 				<b-field label="Select local start time">
 					<b-datetimepicker
 						v-model="form.startAt"
@@ -61,8 +81,10 @@ export default {
 				button_disabled: false,
 				name: "",
 				mode: "",
+				net_interface: "",
 				startAt: "",
 				endAt: "",
+				net_interfaces: [],
 			},
 			// Loader
 			loader: {
@@ -80,6 +102,31 @@ export default {
 
 		onModeChange() {},
 
+		loadInterfaces() {
+			this.loading();
+
+			this.$store.dispatch("role/getInterfacesAction", {}).then(
+				() => {
+					let data = this.$store.getters["role/getInterfaces"];
+
+					if (data) {
+						this.form.net_interfaces = data;
+					} else {
+						this.form.net_interfaces = [];
+					}
+
+					this.loader.ref.close();
+				},
+				(err) => {
+					this.$buefy.toast.open({
+						message: err.response.data.errorMessage,
+						type: "is-danger is-light",
+					});
+					this.loader.ref.close();
+				}
+			);
+		},
+
 		storeEvent() {
 			this.loading();
 			this.form.button_disabled = true;
@@ -91,6 +138,7 @@ export default {
 					endAt: this.form.endAt,
 					value: {
 						mode: this.form.mode,
+						net_interface: this.form.net_interface,
 					},
 				})
 				.then(
@@ -122,6 +170,8 @@ export default {
 				);
 		},
 	},
-	mounted() {},
+	mounted() {
+		this.loadInterfaces();
+	},
 };
 </script>

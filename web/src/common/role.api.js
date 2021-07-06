@@ -14,4 +14,8 @@ const deleteRole = (payload) => {
 	return ApiService.delete("/api/v1/role/" + payload["id"]);
 };
 
-export { createRole, getRoles, deleteRole };
+const getInterfaces = () => {
+	return ApiService.get("/api/v1/net");
+};
+
+export { createRole, getRoles, deleteRole, getInterfaces };

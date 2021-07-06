@@ -6,6 +6,7 @@ package controller
 
 import (
 	"io/ioutil"
+	"net"
 	"net/http"
 	"strconv"
 
@@ -105,4 +106,37 @@ func DeleteRole(c echo.Context, gc *GC) error {
 	}).Info(`Role with id got deleted`)
 
 	return c.NoContent(http.StatusNoContent)
+}
+
+// GetNetInterfaces controller
+func GetNetInterfaces(c echo.Context, _ *GC) error {
+	ifaces, err := net.Interfaces()
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"errorMessage": "Unable to get network interfaces",
+		})
+	}
+
+	var result []string
+
+	mainIfaces := []net.Interface{}
+
+	for _, iface := range ifaces {
+		if iface.Flags&net.FlagUp != 0 && iface.Flags&net.FlagLoopback == 0 && (iface.Flags&net.FlagPointToPoint == 0 || iface.Flags&net.FlagMulticast != 0) {
+			addrs, _ := iface.Addrs()
+			for _, addr := range addrs {
+				if ipnet, ok := addr.(*net.IPNet); ok && !ipnet.IP.IsLinkLocalUnicast() && ipnet.IP.To4() != nil {
+					mainIfaces = append(mainIfaces, iface)
+					break
+				}
+			}
+		}
+	}
+
+	for _, iface := range mainIfaces {
+		result = append(result, iface.Name)
+	}
+
+	return c.JSON(http.StatusOK, result)
 }

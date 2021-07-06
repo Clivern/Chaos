@@ -16,12 +16,12 @@ function chaos {
 
     mkdir -p /etc/chaos
     cd /etc/chaos
-    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/Chaos/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
-    curl -sL https://github.com/Clivern/Chaos/releases/download/v{$LATEST_VERSION}/chaos_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
+    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/clivern/chaos/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
+    curl -sL https://github.com/clivern/chaos/releases/download/v{$LATEST_VERSION}/chaos_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
 
     echo "[Unit]
 Description=Chaos
-Documentation=https://github.com/Clivern/Chaos
+Documentation=https://github.com/clivern/Chaos
 
 [Service]
 ExecStart=/etc/chaos/chaos server -c /etc/chaos/config.prod.yml
