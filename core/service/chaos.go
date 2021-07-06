@@ -13,6 +13,8 @@ import (
 	"github.com/clivern/chaos/core/controller"
 	"github.com/clivern/chaos/core/model"
 	"github.com/clivern/chaos/core/util"
+
+	log "github.com/sirupsen/logrus"
 )
 
 // MIN const
@@ -72,9 +74,24 @@ func (c *Chaos) GetRoles() []model.RoleRequest {
 func (c *Chaos) LoadChaos() {
 	roles := c.GetRoles()
 
+	log.WithFields(log.Fields{}).Info(`Load chaos check`)
+
 	for _, role := range roles {
 		if time.Now().Unix() >= role.StartAt.Unix() && time.Now().Unix() <= role.EndAt.Unix() {
 			if role.Value["mode"] == "sys_load" {
+				log.WithFields(log.Fields{
+					"roleId":   role.ID,
+					"roleName": role.Name,
+					"command": fmt.Sprintf(
+						"stress --cpu %s --io %s --vm %s --hdd %s --timeout %s",
+						role.Value["sys_load_cpu"],
+						role.Value["sys_load_io"],
+						role.Value["sys_load_vm"],
+						role.Value["sys_load_hdd"],
+						strconv.FormatInt(role.EndAt.Unix()-time.Now().Unix(), 10),
+					),
+				}).Info(`Stress the system`)
+
 				c.terminal.Exec("stress", fmt.Sprintf(
 					"--cpu %s --io %s --vm %s --hdd %s --timeout %s",
 					role.Value["sys_load_cpu"],
@@ -87,6 +104,11 @@ func (c *Chaos) LoadChaos() {
 				time.Sleep(30 * time.Second)
 			}
 		} else {
+			log.WithFields(log.Fields{
+				"roleId":   role.ID,
+				"roleName": role.Name,
+			}).Info(`Delete an expired role`)
+
 			c.gc.GetDatabase().DeleteRoleByID(role.ID)
 		}
 	}
@@ -96,15 +118,31 @@ func (c *Chaos) LoadChaos() {
 func (c *Chaos) NetworkChaos() {
 	roles := c.GetRoles()
 
+	log.WithFields(log.Fields{}).Info(`Network chaos check`)
+
 	for _, role := range roles {
 		if time.Now().Unix() >= role.StartAt.Unix() && time.Now().Unix() <= role.EndAt.Unix() {
 			if util.InArray(role.Value["mode"], []string{"network_delay", "packet_loss", "packet_corruption", "packet_duplication"}) {
 				id, ok := c.data.Get("network_role_id")
 
+				log.WithFields(log.Fields{
+					"roleId":   role.ID,
+					"roleName": role.Name,
+				}).Info(`Delete an expired role`)
+
 				if ok && id.(int) == role.ID {
 					time.Sleep(30 * time.Second)
 					continue
 				}
+
+				log.WithFields(log.Fields{
+					"roleId":   role.ID,
+					"roleName": role.Name,
+					"command": fmt.Sprintf(
+						"tc qdisc del dev %s root",
+						role.Value["net_interface"],
+					),
+				}).Info(`Clear the tc roles`)
 
 				c.terminal.Exec("tc", fmt.Sprintf(
 					"qdisc del dev %s root",
@@ -112,6 +150,18 @@ func (c *Chaos) NetworkChaos() {
 				))
 
 				if role.Value["mode"] == "network_delay" {
+
+					log.WithFields(log.Fields{
+						"roleId":   role.ID,
+						"roleName": role.Name,
+						"command": fmt.Sprintf(
+							"tc qdisc add dev %s root netem delay %s %s",
+							role.Value["net_interface"],
+							role.Value["network_delay_delay"],
+							role.Value["network_delay_distribution"],
+						),
+					}).Info(`Apply a new tc role`)
+
 					c.terminal.Exec("tc", fmt.Sprintf(
 						"qdisc add dev %s root netem delay %s %s",
 						role.Value["net_interface"],
@@ -121,6 +171,17 @@ func (c *Chaos) NetworkChaos() {
 				}
 
 				if role.Value["mode"] == "packet_loss" {
+
+					log.WithFields(log.Fields{
+						"roleId":   role.ID,
+						"roleName": role.Name,
+						"command": fmt.Sprintf(
+							"tc qdisc add dev %s root netem loss %s",
+							role.Value["net_interface"],
+							role.Value["packet_loss_percent"],
+						),
+					}).Info(`Apply a new tc role`)
+
 					c.terminal.Exec("tc", fmt.Sprintf(
 						"qdisc add dev %s root netem loss %s",
 						role.Value["net_interface"],
@@ -129,6 +190,17 @@ func (c *Chaos) NetworkChaos() {
 				}
 
 				if role.Value["mode"] == "packet_corruption" {
+
+					log.WithFields(log.Fields{
+						"roleId":   role.ID,
+						"roleName": role.Name,
+						"command": fmt.Sprintf(
+							"tc qdisc add dev %s root netem corrupt %s",
+							role.Value["net_interface"],
+							role.Value["packet_corruption_percent"],
+						),
+					}).Info(`Apply a new tc role`)
+
 					c.terminal.Exec("tc", fmt.Sprintf(
 						"qdisc add dev %s root netem corrupt %s",
 						role.Value["net_interface"],
@@ -137,6 +209,17 @@ func (c *Chaos) NetworkChaos() {
 				}
 
 				if role.Value["mode"] == "packet_duplication" {
+
+					log.WithFields(log.Fields{
+						"roleId":   role.ID,
+						"roleName": role.Name,
+						"command": fmt.Sprintf(
+							"tc qdisc add dev %s root netem duplicate %s",
+							role.Value["net_interface"],
+							role.Value["packet_duplication_percent"],
+						),
+					}).Info(`Apply a new tc role`)
+
 					c.terminal.Exec("tc", fmt.Sprintf(
 						"qdisc add dev %s root netem duplicate %s",
 						role.Value["net_interface"],
@@ -148,6 +231,28 @@ func (c *Chaos) NetworkChaos() {
 				time.Sleep(30 * time.Second)
 			}
 		} else {
+			if util.InArray(role.Value["mode"], []string{"network_delay", "packet_loss", "packet_corruption", "packet_duplication"}) {
+
+				log.WithFields(log.Fields{
+					"roleId":   role.ID,
+					"roleName": role.Name,
+					"command": fmt.Sprintf(
+						"tc qdisc del dev %s root",
+						role.Value["net_interface"],
+					),
+				}).Info(`Clear the tc roles`)
+
+				c.terminal.Exec("tc", fmt.Sprintf(
+					"qdisc del dev %s root",
+					role.Value["net_interface"],
+				))
+			}
+
+			log.WithFields(log.Fields{
+				"roleId":   role.ID,
+				"roleName": role.Name,
+			}).Info(`Delete an expired role`)
+
 			c.gc.GetDatabase().DeleteRoleByID(role.ID)
 		}
 	}
@@ -157,16 +262,45 @@ func (c *Chaos) NetworkChaos() {
 func (c *Chaos) RandomReboot() {
 	roles := c.GetRoles()
 
+	log.WithFields(log.Fields{}).Info(`Random reboots check`)
+
 	for _, role := range roles {
 		if time.Now().Unix() >= role.StartAt.Unix() && time.Now().Unix() <= role.EndAt.Unix() {
 			if role.Value["mode"] == "random_reboots" {
 				if (rand.Intn(MAX-MIN+1) + MIN) == 5 {
-					c.terminal.Exec("reboot", "")
-				}
+					log.WithFields(log.Fields{
+						"roleId":   role.ID,
+						"roleName": role.Name,
+					}).Info(`Reboot the system`)
 
+					err := c.terminal.Exec("reboot", "")
+
+					if err != nil {
+						log.WithFields(log.Fields{
+							"roleId":   role.ID,
+							"roleName": role.Name,
+							"error":    err.Error(),
+						}).Error(`Failed to reboot the system`)
+					} else {
+						log.WithFields(log.Fields{
+							"roleId":   role.ID,
+							"roleName": role.Name,
+						}).Info(`Reboot command succeeded`)
+					}
+				} else {
+					log.WithFields(log.Fields{
+						"roleId":   role.ID,
+						"roleName": role.Name,
+					}).Info(`Skip system reboot`)
+				}
 				time.Sleep(COOLDOWN * time.Second)
 			}
 		} else {
+			log.WithFields(log.Fields{
+				"roleId":   role.ID,
+				"roleName": role.Name,
+			}).Info(`Delete an expired role`)
+
 			c.gc.GetDatabase().DeleteRoleByID(role.ID)
 		}
 	}
