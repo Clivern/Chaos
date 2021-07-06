@@ -137,6 +137,29 @@ var serverCmd = &cobra.Command{
 
 		defer context.GetDatabase().Close()
 
+		chaos := service.NewChaos(context)
+
+		go func() {
+			for {
+				chaos.LoadChaos()
+				time.Sleep(60 * time.Second)
+			}
+		}()
+
+		go func() {
+			for {
+				chaos.NetworkChaos()
+				time.Sleep(60 * time.Second)
+			}
+		}()
+
+		go func() {
+			for {
+				chaos.RandomReboot()
+				time.Sleep(60 * time.Second)
+			}
+		}()
+
 		viper.SetDefault("config", config)
 
 		e := echo.New()
