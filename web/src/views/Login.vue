@@ -40,38 +40,32 @@ export default {
 		loginEvent() {
 			this.form.button_disabled = true;
 
-			this.$store
-				.dispatch("role/getRolesAction", {
-					apiKey: this.form.api_key,
-				})
-				.then(
-					() => {
+			this.$store.dispatch("auth/authAction", this.form.api_key).then(
+				() => {
+					this.$buefy.toast.open({
+						message: "You logged in successfully",
+						type: "is-success",
+					});
+					localStorage.setItem("x_api_key", this.form.api_key);
+					this.$router.push("/");
+				},
+				(err) => {
+					if (err.response.data.errorMessage) {
 						this.$buefy.toast.open({
-							message: "You logged in successfully",
-							type: "is-success",
+							message: err.response.data.errorMessage,
+							type: "is-danger",
 						});
-						localStorage.setItem("x_api_key", this.form.api_key);
-						this.$router.push("/");
-					},
-					(err) => {
-						if (err.response.data.errorMessage) {
-							this.$buefy.toast.open({
-								message: err.response.data.errorMessage,
-								type: "is-danger",
-							});
-						} else {
-							this.$buefy.toast.open({
-								message: "Oops! invalid api key",
-								type: "is-danger",
-							});
-						}
-						this.form.button_disabled = false;
+					} else {
+						this.$buefy.toast.open({
+							message: "Oops! invalid api key",
+							type: "is-danger",
+						});
 					}
-				);
+					this.form.button_disabled = false;
+				}
+			);
 		},
 	},
-	mounted() {
-		this.loading();
-	},
+	mounted() {},
 };
 </script>

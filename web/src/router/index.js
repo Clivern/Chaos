@@ -31,6 +31,14 @@ const routes = [
 		},
 	},
 	{
+		path: "/roles/new",
+		name: "NewRole",
+		component: () => import("../views/New.vue"),
+		meta: {
+			requiresAuth: true,
+		},
+	},
+	{
 		path: "/404",
 		name: "NotFound",
 		component: () => import("../views/NotFound.vue"),

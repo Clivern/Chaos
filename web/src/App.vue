@@ -14,6 +14,11 @@
 					Roles</router-link
 				>
 				|
+				<router-link to="/roles/new">
+					<b-icon pack="fas" icon="pen" size="is-small"> </b-icon>
+					New Role</router-link
+				>
+				|
 				<a href="#" @click="logout">
 					<b-icon pack="fas" icon="sign-out-alt" size="is-small"> </b-icon>
 					Logout</a

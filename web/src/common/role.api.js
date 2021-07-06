@@ -6,7 +6,7 @@ const createRole = (payload) => {
 	return ApiService.post("/api/v1/role", payload);
 };
 
-const getRoles = (payload) => {
+const getRoles = () => {
 	return ApiService.get("/api/v1/role");
 };
 

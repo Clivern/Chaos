@@ -17,7 +17,7 @@ app:
   # API Credentials
   api:
     # API Key
-    key: ${CHAOS_LOGIN_SECRET:-b08a1a8d-aefa-40fe-8473-59412ae46d11}
+    key: ${CHAOS_API_KEY:-b08a1a8d-aefa-40fe-8473-59412ae46d11}
 
   # Global timeout
   timeout: ${CHAOS_TIMEOUT:-50}

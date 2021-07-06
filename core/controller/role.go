@@ -5,7 +5,6 @@
 package controller
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -29,7 +28,7 @@ func CreateRole(c echo.Context, gc *GC) error {
 
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"errorMessage": fmt.Sprintf("Invalid request %s", err.Error()),
+			"errorMessage": "Invalid request",
 		})
 	}
 

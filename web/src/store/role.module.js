@@ -26,8 +26,8 @@ const actions = {
 		context.commit("SET_CREATE_ROLE_RESULT", result.data);
 		return result;
 	},
-	async getRolesAction(context, payload) {
-		const result = await getRoles(payload);
+	async getRolesAction(context) {
+		const result = await getRoles();
 		context.commit("SET_GET_ROLES_RESULT", result.data);
 		return result;
 	},

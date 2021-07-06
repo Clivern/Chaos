@@ -13,10 +13,8 @@ const ApiService = {
 		return apiURL + endpoint;
 	},
 
-	getHeaders() {
-		let apiKey = "";
-
-		if (localStorage.getItem("x_api_key") != null) {
+	getHeaders(apiKey = null) {
+		if (localStorage.getItem("x_api_key") != null && apiKey == null) {
 			apiKey = localStorage.getItem("x_api_key");
 		}
 
@@ -46,6 +44,10 @@ const ApiService = {
 
 	put(endpoint, data = {}) {
 		return axios.put(this.getURL(endpoint), data, this.getHeaders());
+	},
+
+	auth(endpoint, apiKey) {
+		return axios.get(this.getURL(endpoint), this.getHeaders(apiKey));
 	},
 };
 

@@ -10,4 +10,8 @@ const getHealth = () => {
 	return ApiService.get("/_health");
 };
 
-export { getReadiness, getHealth };
+const auth = (apiKey) => {
+	return ApiService.auth("/api/v1/role", apiKey);
+};
+
+export { getReadiness, getHealth, auth };
