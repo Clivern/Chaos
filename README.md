@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Chaos Logo" src="/static/logo.png?v=0.10.0" width="200" />
+    <img alt="Chaos Logo" src="/static/logo.png?v=0.10.0" width="150" />
     <h3 align="center">Chaos</h3>
     <p align="center">A Server Chaos Maker, Set up in Minutes.</p>
     <p align="center">
@@ -24,7 +24,7 @@
     </p>
 </p>
 
-This tool can cause a chaos to running servers. It can cause random reboots, traffic drop, latency, increase cpu/memory/io usage  or health checks failure. Chaos needed badly to test monitoring systems efficiency or systems resilience.
+Chaos causes a chaos to running servers. It can cause random reboots, traffic drop, latency, cpu/memory/io usage increase or health checks failure. Chaos needed badly to test monitoring systems efficiency or systems resilience.
 
 
 ### Getting Started
