@@ -5,7 +5,7 @@ function deps {
 
     apt-get update
     apt-get upgrade -y
-    apt-get install stress -y
+    apt-get install stress jq -y
     apt-get install net-tools -y
 
     echo "Installing dependencies done!"

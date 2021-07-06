@@ -32,7 +32,14 @@ This tool can cause a chaos to running servers. It can cause random reboots, tra
 To install `Chaos`, Use the following script:
 
 ```zsh
+# To install chaos
 $ bash < <(curl -s https://raw.githubusercontent.com/clivern/chaos/main/deployment/ubuntu/install.sh)
+
+# To Install node exporter (optional)
+$ bash < <(curl -s https://raw.githubusercontent.com/clivern/chaos/main/deployment/ubuntu/node_exporter.sh)
+
+# To upgrade chaos
+$ bash < <(curl -s https://raw.githubusercontent.com/clivern/chaos/main/deployment/ubuntu/upgrade.sh)
 
 # Get The Public IP
 $ curl https://ipinfo.io/ip
