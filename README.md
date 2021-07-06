@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Chaos Logo" src="/static/logo.png?v=0.6.0" width="200" />
+    <img alt="Chaos Logo" src="/static/logo.png?v=0.7.0" width="200" />
     <h3 align="center">Chaos</h3>
     <p align="center">A Server Chaos Maker, Set up in Minutes.</p>
     <p align="center">
@@ -10,10 +10,10 @@
             <img src="https://github.com/clivern/chaos/actions/workflows/ui.yml/badge.svg">
         </a>
         <a href="https://github.com/clivern/chaos/releases">
-            <img src="https://img.shields.io/badge/Version-v0.6.0-red.svg">
+            <img src="https://img.shields.io/badge/Version-v0.7.0-red.svg">
         </a>
         <a href="https://goreportcard.com/report/github.com/clivern/chaos">
-            <img src="https://goreportcard.com/badge/github.com/clivern/chaos?v=0.6.0">
+            <img src="https://goreportcard.com/badge/github.com/clivern/chaos?v=0.7.0">
         </a>
         <a href="https://godoc.org/github.com/clivern/chaos">
             <img src="https://godoc.org/github.com/clivern/chaos?status.svg">
