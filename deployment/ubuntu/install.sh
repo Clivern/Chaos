@@ -7,6 +7,7 @@ function deps {
     apt-get upgrade -y
     apt-get install stress jq -y
     apt-get install net-tools -y
+    apt-get install build-essential gcc -y
 
     echo "Installing dependencies done!"
 }

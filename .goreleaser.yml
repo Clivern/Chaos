@@ -6,6 +6,7 @@ archives:
       amd64: x86_64
       darwin: Darwin
       linux: Linux
+      windows: Windows
     files:
       - LICENSE
       - README.md
@@ -17,10 +18,11 @@ before:
     - "go generate ./..."
 builds:
   - env:
-      - CGO_ENABLED=1
+      - CGO_ENABLED=0
     goos:
       - linux
       - darwin
+      - windows
 
 changelog:
   filters:
