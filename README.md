@@ -1,3 +1,3 @@
 <p align="center">
-    <img alt="Logo" src="https://www.rust-lang.org/logos/rust-logo-512x512-blk.png" width="20%" />
+    <img alt="Logo" src="/img/logo.jpeg" width="40%" />
 </p>
