@@ -9,7 +9,7 @@
     </p>
 </p>
 
-Snells is a system that allows to monitor and control a number of processes on UNIX-like operating systems.
+Snells is a system that allows its users to monitor and control a number of processes on UNIX-like operating systems.
 
 
 ## Versioning
