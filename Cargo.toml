@@ -1,0 +1,18 @@
+[package]
+name = "snells"
+version = "0.1.0"
+authors = ["Clivern <hello@clivern.com>"]
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+documentation = "https://github.com/clivern/snells"
+repository = "https://github.com/clivern/snells"
+categories = ["command-line-utilities"]
+keywords = ["clivern", "snells"]
+description = """
+@TODO
+"""
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
