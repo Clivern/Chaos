@@ -1,13 +1,15 @@
 <p align="center">
     <img alt="Snells Logo" src="/img/logo.jpeg" width="70%" />
     <h3 align="center">Snells</h3>
-    <p align="center">A Process Control System.</p>
+    <p align="center">A Process Control System</p>
     <p align="center">
         <a href="https://github.com/Clivern/Snells/actions/workflows/build.yml">
             <img src="https://github.com/Clivern/Snells/actions/workflows/build.yml/badge.svg"/>
         </a>
     </p>
 </p>
+
+Snells is a system that allows to monitor and control a number of processes on UNIX-like operating systems.
 
 
 ## Versioning
