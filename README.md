@@ -10,7 +10,7 @@
             <img src="https://github.com/Clivern/Chaos/actions/workflows/ui.yml/badge.svg">
         </a>
         <a href="https://github.com/Clivern/Chaos/releases">
-            <img src="https://img.shields.io/badge/Version-v1.0.0-red.svg">
+            <img src="https://img.shields.io/badge/Version-v0.1.0-red.svg">
         </a>
         <a href="https://goreportcard.com/report/github.com/Clivern/Chaos">
             <img src="https://goreportcard.com/badge/github.com/clivern/Chaos?v=1.0.0">
@@ -25,7 +25,8 @@
 </p>
 
 
-## Documentation
+### Documentation
+
 
 ### Versioning
 
