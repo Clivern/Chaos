@@ -27,6 +27,15 @@
 
 ### Getting Started
 
+To install `Chaos`, Use the following script:
+
+```zsh
+$ bash < <(curl -s https://raw.githubusercontent.com/Clivern/Chaos/main/deployment/ubuntu/install.sh)
+
+# Get The Public IP
+$ curl https://ipinfo.io/ip
+x.x.x.x
+```
 
 ### Versioning
 
