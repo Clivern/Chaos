@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Chaos Logo" src="/static/logo.png?v=1.0.0" width="200" />
+    <img alt="Chaos Logo" src="/static/logo.png?v=0.1.0" width="200" />
     <h3 align="center">Chaos</h3>
     <p align="center">A Server Chaos Maker, Set up in Minutes.</p>
     <p align="center">
