@@ -24,6 +24,8 @@
     </p>
 </p>
 
+This tool can cause a chaos to running servers. It can cause random reboots, traffic drop, latency, increase cpu/memory/io usage  or health checks failure. Chaos needed badly to test monitoring systems efficiency or systems resilience.
+
 
 ### Getting Started
 
