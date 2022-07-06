@@ -19,20 +19,18 @@ app:
 
   # Application Database
   database:
-      # database driver
-      driver: ${CHAOS_DB_DRIVER:-etcd}
-
-      etcd:
-        # etcd database name or prefix
-        databaseName: ${CHAOS_DB_ETCD_DB:-chaos}
-        # etcd username
-        username: ${CHAOS_DB_ETCD_USERNAME:- }
-        # etcd password
-        password: ${CHAOS_DB_ETCD_PASSWORD:- }
-        # etcd endpoints
-        endpoints: ${CHAOS_DB_ETCD_ENDPOINTS:-http://127.0.0.1:2379}
-        # Timeout in seconds
-        timeout: 30
+      # Database driver (sqlite3, mysql)
+      driver: ${CHAOS_DATABASE_DRIVER:-sqlite3}
+      # Database Host
+      host: ${CHAOS_DATABASE_MYSQL_HOST:-localhost}
+      # Database Port
+      port: ${CHAOS_DATABASE_MYSQL_PORT:-3306}
+      # Database Name
+      name: ${CHAOS_DATABASE_MYSQL_DATABASE:-chaos.db}
+      # Database Username
+      username: ${CHAOS_DATABASE_MYSQL_USERNAME:-root}
+      # Database Password
+      password: ${CHAOS_DATABASE_MYSQL_PASSWORD:-root}
 
   # Log configs
   log:

@@ -19,15 +19,6 @@
 			</p>
 			<br />
 			<small>
-				<b-icon pack="fas" icon="broadcast-tower" size="is-small"> </b-icon>
-				<strong
-					v-bind:class="{
-						'has-text-info': backend_status != 'down',
-						'has-text-danger': backend_status == 'down',
-					}"
-				>
-					- Backend is {{ backend_status }}</strong
-				><br /><br />
 				Made with
 				<span class="icon has-text-danger"><i class="fas fa-heart"></i></span>
 				by

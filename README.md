@@ -25,7 +25,7 @@
 </p>
 
 
-### Documentation
+### Getting Started
 
 
 ### Versioning

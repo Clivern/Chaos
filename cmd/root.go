@@ -18,7 +18,7 @@ var rootCmd = &cobra.Command{
 	Short: `🐺 A Server Chaos Maker, Set up in Minutes
 
 If you have any suggestions, bug reports, or annoyances please report
-them to our issue tracker at <https://github.com/Clivern/chaos/issues>`,
+them to our issue tracker at <https://github.com/Clivern/Chaos/issues>`,
 }
 
 // Execute runs cmd tool
