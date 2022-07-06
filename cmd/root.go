@@ -14,11 +14,11 @@ import (
 var config string
 
 var rootCmd = &cobra.Command{
-	Use: "knot",
-	Short: `🐺 A Secure and Reliable Terraform Cloud, Set up in Minutes
+	Use: "chaos",
+	Short: `🐺 A Server Chaos Maker, Set up in Minutes
 
 If you have any suggestions, bug reports, or annoyances please report
-them to our issue tracker at <https://github.com/Clivern/knot/issues>`,
+them to our issue tracker at <https://github.com/Clivern/chaos/issues>`,
 }
 
 // Execute runs cmd tool

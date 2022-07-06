@@ -1,47 +1,42 @@
 #!/bin/bash
 
-function install_dependencies {
+function deps {
     echo "Installing dependencies ..."
 
     apt-get update
-
     apt-get upgrade -y
-
-    apt-get install jq bind9 -y
+    apt-get install stress -y
+    apt-get install net-tools -y
 
     echo "Installing dependencies done!"
 }
 
-function install_knot {
-    echo "Installing knot ..."
+function chaos {
+    echo "Installing chaos ..."
 
-    mkdir -p /etc/knot
-
-    cd /etc/knot
-
-    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/knot/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
-
-    curl -sL https://github.com/Clivern/knot/releases/download/v{$LATEST_VERSION}/knot_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
-
+    mkdir -p /etc/chaos
+    cd /etc/chaos
+    LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/Chaos/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
+    curl -sL https://github.com/Clivern/chaos/releases/download/v{$LATEST_VERSION}/chaos_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
 
     echo "[Unit]
-Description=Knot
-Documentation=https://github.com/Clivern/knot
+Description=Chaos
+Documentation=https://github.com/Clivern/Chaos
 
 [Service]
-ExecStart=/etc/knot/knot server -c /etc/knot/config.prod.yml
+ExecStart=/etc/chaos/chaos server -c /etc/chaos/config.prod.yml
 Restart=on-failure
 RestartSec=2
 
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/knot.service
+WantedBy=multi-user.target" > /etc/systemd/system/chaos.service
 
     systemctl daemon-reload
-    systemctl enable knot.service
-    systemctl start knot.service
+    systemctl enable chaos.service
+    systemctl start chaos.service
 
-    echo "Knot installation done!"
+    echo "Chaos installation done!"
 }
 
-install_dependencies
-install_knot
+deps
+chaos

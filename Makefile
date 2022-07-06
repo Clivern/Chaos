@@ -7,7 +7,7 @@ npx          ?= npx
 
 help: Makefile
 	@echo
-	@echo " Choose a command run in Knot:"
+	@echo " Choose a command run in Chaos:"
 	@echo
 	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
 	@echo
@@ -141,7 +141,7 @@ format_ui:
 package:
 	@echo ">> ============= Package Assets ============= <<"
 	-rm $(shell pwd)/web/.env
-	echo "KNOT_DASHBOARD_URL=" > $(shell pwd)/web/.env.dist
+	echo "CHAOS_DASHBOARD_URL=" > $(shell pwd)/web/.env.dist
 	cd web;$(npm) run build
 
 
@@ -149,7 +149,7 @@ package:
 .PHONY: run
 run:
 	@echo ">> ============= Run API Server ============= <<"
-	$(go) run knot.go server -c config.dist.yml
+	$(go) run chaos.go server -c config.dist.yml
 
 
 ## ci: Run all CI tests.

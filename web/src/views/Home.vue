@@ -6,12 +6,12 @@
 		<img alt="logo" src="../assets/logo.png" width="200" />
 		<div class="hello">
 			<br /><br />
-			<strong>Welcome to Knot</strong>
+			<strong>Welcome to Chaos</strong>
 			<p>
 				If you have any suggestions, bug reports, or annoyances
 				<br />please report them to our
 				<a
-					href="https://github.com/clivern/knot/issues"
+					href="https://github.com/clivern/chaos/issues"
 					target="_blank"
 					rel="noopener"
 					>issue tracker</a

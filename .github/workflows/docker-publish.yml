@@ -15,7 +15,7 @@ on:
 
 env:
   # Change variable to your image's name.
-  IMAGE_NAME: knot
+  IMAGE_NAME: chaos
 
 jobs:
   # Run tests.

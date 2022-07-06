@@ -1,4 +1,4 @@
-module github.com/clivern/knot
+module github.com/clivern/chaos
 
 go 1.17
 

@@ -34,4 +34,4 @@ checksum:
   name_template: checksums.txt
 snapshot:
   name_template: "{{ .Tag }}-next"
-project_name: knot
+project_name: chaos
