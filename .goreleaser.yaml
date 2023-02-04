@@ -26,6 +26,11 @@ archives:
     format_overrides:
     - goos: windows
       format: zip
+    files:
+      - LICENSE
+      - README.md
+      - config.dist.yml
+      - config.prod.yml
 checksum:
   name_template: 'checksums.txt'
 snapshot:
