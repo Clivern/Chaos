@@ -7,8 +7,8 @@ function node_exporter {
     useradd -g node_exporter --no-create-home --shell /bin/false node_exporter
 
     cd /tmp
-    curl -sL https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz | tar xz
-    cp /tmp/node_exporter-1.5.0.linux-amd64/node_exporter /usr/bin/
+    curl -sL https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz | tar xz
+    cp /tmp/node_exporter-1.6.1.linux-amd64/node_exporter /usr/bin/
     chmod +x /usr/bin/node_exporter
     chown node_exporter:node_exporter /usr/bin/node_exporter
 

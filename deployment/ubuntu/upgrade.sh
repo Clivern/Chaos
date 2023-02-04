@@ -8,7 +8,7 @@ function chaos {
 
     LATEST_VERSION=$(curl --silent "https://api.github.com/repos/Clivern/Chaos/releases/latest" | jq '.tag_name' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d v)
 
-    curl -sL https://github.com/Clivern/Chaos/releases/download/v{$LATEST_VERSION}/chaos_{$LATEST_VERSION}_Linux_x86_64.tar.gz | tar xz
+    curl -sL https://github.com/Clivern/Chaos/releases/download/v{$LATEST_VERSION}/chaos_Linux_x86_64.tar.gz | tar xz
 
     rm config.prod.yml
     mv config.back.yml config.prod.yml
