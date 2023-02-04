@@ -22,3 +22,5 @@ sync
 
 config.test.yml
 coverage.html
+
+dist/
