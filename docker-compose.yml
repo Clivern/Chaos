@@ -3,7 +3,7 @@ version: '3'
 services:
 
   prometheus:
-    image: 'prom/prometheus:v2.53.0'
+    image: 'prom/prometheus:v2.53.1'
     volumes:
       - '/root/prometheus.yml:/etc/prometheus/prometheus.yml'
     ports:
