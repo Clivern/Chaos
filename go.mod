@@ -1,6 +1,6 @@
 module github.com/clivern/chaos
 
-go 1.19
+go 1.23
 
 require (
 	github.com/drone/envsubst v1.0.3
@@ -9,7 +9,7 @@ require (
 	github.com/labstack/echo-contrib v0.15.0
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/satori/go.uuid v1.2.0
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.10.2
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.18.2
 )
